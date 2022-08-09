@@ -1,0 +1,27 @@
+﻿<div class="container">
+    <div class="row p-4 pb-0 pe-lg-5 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <h1 class="display-5 fw-bold">List of Employees</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Ssername</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var employee in Model)
+                {
+                    <tr>
+                        <td>@employee.EmployeeId</td>
+                        <td>@employee.Name</td>
+                        <td>@employee.Username</td>
+                        <td>@employee.Password</td>
+                    </tr>
+                }
+
+            </tbody>
+            </table>
+    </div>
+</div>
