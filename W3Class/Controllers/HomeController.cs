@@ -41,6 +41,28 @@ namespace W3Class.Controllers
             string output = "<h2>The total is: " + total + "</h2>" + "<h3>The average is: " + average + "</h3>";
             return Content(output);
         }
+        // test string https://localhost:7103/home/UpperCase?json=[%22technology%22,%22is%22,%22best%22,%22when%22,%22it%22,%22brings%22,%22people%22,%22together%22]
+        public IActionResult UpperCase(string json)
+        {
+            Response.ContentType = "text/html";
+            string[] words = JsonConvert.DeserializeObject<string[]>(json);
+
+            List<string> capitalisedWords= new List<string>();
+            List<string> capitalisedLetters = new List<string>();
+
+            for (int i=0; i<words.Length; i++)
+            {
+                string capitalised = words[i].ToUpper();
+                capitalisedWords.Add(capitalised);
+                string capitalLetters = char.ToUpper(words[i][0])+ words[i].Substring(1);
+                capitalisedLetters.Add(capitalLetters);
+
+
+            }
+            string output = "<h2 style=color:green >Capitalised sentence is " + string.Join(" ", capitalisedWords) +"</h2></br>"+
+                "<h3 style=color:blue>Capitalised first letter is : " + string.Join(" ", capitalisedLetters)+"</h3>";
+            return Content(output);
+        }
 
         // test string https://localhost:7103/home/JsonCalc?json=[2,4,9,45,12,789,23,6]
         public IActionResult JsonCalc(string json)
